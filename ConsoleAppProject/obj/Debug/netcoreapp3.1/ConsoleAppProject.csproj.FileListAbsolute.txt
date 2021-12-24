@@ -1,0 +1,14 @@
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\bin\Debug\netcoreapp3.1\ConsoleAppProject.exe
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\bin\Debug\netcoreapp3.1\ConsoleAppProject.deps.json
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\bin\Debug\netcoreapp3.1\ConsoleAppProject.runtimeconfig.json
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\bin\Debug\netcoreapp3.1\ConsoleAppProject.runtimeconfig.dev.json
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\bin\Debug\netcoreapp3.1\ConsoleAppProject.dll
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\bin\Debug\netcoreapp3.1\ConsoleAppProject.pdb
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.csproj.AssemblyReference.cache
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.AssemblyInfoInputs.cache
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.AssemblyInfo.cs
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.csproj.CoreCompileInputs.cache
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.dll
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.pdb
+C:\Users\Asus\OneDrive\İş masası\c#\ConsoleAppProject\ConsoleAppProject\obj\Debug\netcoreapp3.1\ConsoleAppProject.genruntimeconfig.cache
