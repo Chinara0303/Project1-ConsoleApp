@@ -1,5 +1,4 @@
-﻿using ConsoleAppProject.Enums;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -12,39 +11,27 @@ namespace ConsoleAppProject.Models
         public string FullName { get; set; }
         public string Position { get; set; }
         public double Salary { get; set; }
-        public Departments departmentNames { get; set; }
+        public  string DepartmentName { get; set; }
 
 
-        public Employee(string no,string fullname, string position,double salary, Departments departmentNames)
+
+        public Employee(string fullname, string position, double salary, string departmentName)
+
         {
             Count++;
-            No = no;
-            Position = position;
+            No += departmentName.ToUpper().Substring(0, 2) + Count;
+            
             Salary = salary;
-           
-            switch ((int)departmentNames)
+            DepartmentName = departmentName;
+            if (Position.Length < 2)
             {
-                case 0:
-                    No += "MA" + Count;
-                    break;
-                case 1:
-                    No += "RD" + Count;
-                    break;
-                case 2:
-                    No += "FI" + Count;
-                    break;
-                case 3:
-                    No += "CS" + Count;
-                    break;
-                case 4:
-                    No += "HR" + Count;
-                    break;
+                Console.WriteLine("daxil etdiyiniz melumat yalnisdir");
             }
         }
        
         public override string ToString()
         {
-            return $"Nomresi: {No}\nVezifesi: {Position}\nEmekhaqqi: {Salary}";
+            return $"Adi Soyadi: {FullName}\n Nomresi: {No}\nVezifesi: {Position}\nEmekhaqqi: {Salary}";
         }
 
 
