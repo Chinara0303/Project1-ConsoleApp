@@ -13,20 +13,15 @@ namespace ConsoleAppProject.Models
         public double Salary { get; set; }
         public  string DepartmentName { get; set; }
 
-
-
         public Employee(string fullname, string position, double salary, string departmentName)
-
         {
             Count++;
             No += departmentName.ToUpper().Substring(0, 2) + Count;
             
             Salary = salary;
             DepartmentName = departmentName;
-            if (Position.Length < 2)
-            {
-                Console.WriteLine("daxil etdiyiniz melumat yalnisdir");
-            }
+            Position = position;
+            
         }
        
         public override string ToString()

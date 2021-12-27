@@ -52,20 +52,19 @@ namespace ConsoleAppProject.Services
 
         public void EditDepartments(string Name, string NewName)
         {
-
             foreach (Department item in _departments)
             {
-                if (item.Name == NewName)
+                if (item.Name.ToLower() == NewName.ToLower())
                 {
+                    item.Name = NewName;
+                    Console.WriteLine("Deyishiklik Ugurla Elave Edildi:");
                     break;
                 }
             }
         }
 
-
         public void EditEmployee(string no, string fullname, string position, double salary)
         {
-
             foreach (Employee item in _employees)
             {
                 if (item.No == no)
@@ -74,24 +73,9 @@ namespace ConsoleAppProject.Services
                     item.Position = position;
                     item.Salary = salary;
                 }
-
             }
             return;
-
         }
-
-        //public Department[] GetDepartments(Department[] Departments)
-        //{
-        //    throw new NotImplementedException();
-        //   //return  Departments;
-        //    //foreach (var item in _departments)
-        //    //{
-        //    //    if(_departments.Length>0)
-        //    //    {
-        //    //        Console.WriteLine( item.CalcSalaryAverage);
-        //    //    }
-        //    //}
-        //}
 
         public void RemoveEmployee(string No, string DepartmentName)
         {
@@ -105,29 +89,36 @@ namespace ConsoleAppProject.Services
             }
         }
 
-        public Employee[] GetEmployees(string No, string FullName, string DepartmentName, double Salary)
+        public void GetEmployees(string No, string FullName, string DepartmentName, double Salary)
         {
             Employee[] employees = new Employee[0];
 
             foreach (Employee item in _employees)
             {
-                if (item.No == No)
+                if (item.FullName == FullName)
                 {
                     Array.Resize(ref employees, employees.Length + 1);
                     employees[employees.Length - 1] = item;
-                    item.FullName = FullName;
+                    item.No = No;
                     item.DepartmentName = DepartmentName;
                     item.Salary = Salary;
                 }
 
             }
-
         }
 
-
-            public Department[] GetEmployeesByDepartments(string No, string Fullname, string Position, double Salary)
+        public void GetEmployeesByDepartments(string departmentname)
+        {
+            foreach (Employee item in _employees)
             {
-                throw new NotImplementedException();
+                if (item.DepartmentName.ToLower()== departmentname.ToLower())
+                {
+                    Console.WriteLine($"{item}");
+                    Console.WriteLine("_____________");
+                }
+                
             }
-        
-}   }
+        }
+
+    }   
+}
