@@ -7,9 +7,38 @@ namespace ConsoleAppProject.Models
     class Department
     {
         public string Name { get; set; }
-        public int Workerlimit { get; set; }
-        public double SalaryLimit { get; set; }
-        public Employee[] Employees { get; set; }
+        public double SalaryLimit
+        {
+            get
+            {
+                return _salarylimit;
+            }
+            set
+            {
+                if (value>250)
+                {
+                    _salarylimit = value;
+                }
+            }
+        }
+        private double _salarylimit;
+        public int WorkerLimit 
+        {
+            get
+            {
+                return _workerlimit;
+            }
+            set
+            {
+                if (value>1)
+                {
+                    _workerlimit = value;
+                }
+            }
+        }
+        private int _workerlimit;
+
+        public Employee[] Employees = { };
         public double CalcSalaryAverage(Department department)
         {
             double TotalSalary = 0;
@@ -21,16 +50,18 @@ namespace ConsoleAppProject.Models
             }
             return TotalSalary / Counter;
         }
-        public Department(string name, int workerlimit, double salaryLimit)
+        public Department(string name, int workerlimit, double salarylimit)
         {
             Name = name;
-            Workerlimit = workerlimit;
-            SalaryLimit = salaryLimit;
+            WorkerLimit = workerlimit;
+            SalaryLimit = salarylimit;
+            Employees = new Employee[0];
         }
         public override string ToString()
         {
-            return $"Departament adi: {Name}\nIshci sayi: {Workerlimit}\nMaash Limiti:{SalaryLimit}\n";
+            return $"Departament adi: {Name}\nIshci sayi: {WorkerLimit}\nMaash Limiti:{SalaryLimit}\n";
         }
+       
        
     }
 }

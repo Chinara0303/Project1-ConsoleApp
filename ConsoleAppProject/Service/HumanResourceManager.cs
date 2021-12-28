@@ -9,12 +9,9 @@ namespace ConsoleAppProject.Services
     {
         public Department[] Departments => _departments;
         private Department[] _departments;
-        public Employee[] employees => _employees;
-        private Employee[] _employees;
         public HumanResourceManager()
         {
             _departments = new Department[0];
-            _employees = new Employee[0];
         }
         public void AddDeparment(string Name, int Workerlimit, double SalaryLimit)
         {
@@ -43,9 +40,14 @@ namespace ConsoleAppProject.Services
         public void AddEmployee(string fullname, string position, double salary, string departmentName)
         {
             Employee employee = new Employee(fullname, position, salary, departmentName);
-            Array.Resize(ref _employees, _employees.Length + 1);
-            _employees[_employees.Length - 1] = employee;
-
+            foreach (Department item in _departments)
+            {
+                if (employee.DepartmentName.ToLower() == departmentName.ToLower())
+                {
+                    Array.Resize(ref item.Employees, item.Employees.Length + 1);
+                    item.Employees[item.Employees.Length - 1] = employee;
+                }
+            }
         }
         public void EditDepartments(string Name, string NewName)
         {
@@ -61,55 +63,70 @@ namespace ConsoleAppProject.Services
         }
         public void EditEmployee(string no, string fullname, string position, double salary)
         {
-            foreach (Employee item in _employees)
+            foreach (Department item in _departments)
             {
-                if (item.No == no)
+                foreach (Employee item1 in item.Employees)
                 {
-                    item.FullName = fullname;
-                    item.Position = position;
-                    item.Salary = salary;
+                    if (item1.No==no)
+                    {
+                          item1.FullName = fullname;
+                    item1.Position=position;
+                    item1.Salary = salary;
+                    }
                 }
+
             }
-            return;
+
         }
         public void RemoveEmployee(string No, string DepartmentName)
         {
-            for (int i = 0; i < _employees.Length; i++)
+            foreach (Department item in _departments)
             {
-                if (_employees[i].No == No)
+                for (int i = 0; i < item.Employees.Length; i++)
                 {
-                    _employees = null;
-                    return;
+                    if (item.Employees[i].No == No)
+                    {
+                        item.Employees = null;
+                        return;
+                    }
                 }
             }
+            
         }
         public void GetEmployees(string No, string FullName, string DepartmentName, double Salary)
         {
             Employee[] employees = new Employee[0];
 
-            foreach (Employee item in _employees)
+            foreach (Department item in _departments )
             {
-                if (item.FullName == FullName)
+                foreach (Employee item1 in employees)
                 {
-                    Array.Resize(ref employees, employees.Length + 1);
-                    employees[employees.Length - 1] = item;
-                    item.No = No;
-                    item.DepartmentName = DepartmentName;
-                    item.Salary = Salary;
+                    if (item1.FullName == FullName)
+                    {
+                        Array.Resize(ref employees, employees.Length + 1);
+                        employees[employees.Length - 1] = item1;
+                        item1.No = No;
+                        item1.DepartmentName = DepartmentName;
+                        item1.Salary = Salary;
+                    }
                 }
 
             }
         }
         public void GetEmployeesByDepartments(string departmentname)
         {
-            foreach (Employee item in _employees)
+            foreach (Department item in _departments)
             {
-                if (item.DepartmentName.ToLower()== departmentname.ToLower())
+                foreach (Employee item1 in item.Employees)
                 {
-                    Console.WriteLine($"{item}");
-                    Console.WriteLine("_____________");
+                    if (item1.DepartmentName.ToLower() == departmentname.ToLower())
+                    {
+                        Console.WriteLine($"{item}");
+                        Console.WriteLine("_____________");
+                    }
                 }
-                
+              
+
             }
         }
 
