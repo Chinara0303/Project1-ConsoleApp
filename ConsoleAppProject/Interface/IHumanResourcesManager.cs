@@ -15,6 +15,6 @@ namespace ConsoleAppProject.Services
         void AddEmployee(string fullname, string position, double salary, string departmentName);
         void RemoveEmployee(string No, string DepartmentName);
         void EditEmployee(string No, string Fullname, string Position, double Salary);
-       void GetEmployeesByDepartments(string departmentname);
+        void GetEmployeesByDepartments(string departmentname);
     }
 }

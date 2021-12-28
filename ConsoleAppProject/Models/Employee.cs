@@ -12,7 +12,6 @@ namespace ConsoleAppProject.Models
         public string Position { get; set; }
         public double Salary { get; set; }
         public  string DepartmentName { get; set; }
-
         public Employee(string fullname, string position, double salary, string departmentName)
         {
             Count++;
@@ -21,14 +20,12 @@ namespace ConsoleAppProject.Models
             Salary = salary;
             DepartmentName = departmentName;
             Position = position;
+            FullName = fullname;
             
         }
-       
         public override string ToString()
         {
             return $"Adi Soyadi: {FullName}\n Nomresi: {No}\nVezifesi: {Position}\nEmekhaqqi: {Salary}";
         }
-
-
     }
 }

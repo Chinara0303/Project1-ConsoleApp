@@ -16,7 +16,6 @@ namespace ConsoleAppProject.Services
             _departments = new Department[0];
             _employees = new Employee[0];
         }
-
         public void AddDeparment(string Name, int Workerlimit, double SalaryLimit)
         {
             Department department = new Department(Name, Workerlimit, SalaryLimit);
@@ -41,7 +40,6 @@ namespace ConsoleAppProject.Services
             }
             return false;
         }
-
         public void AddEmployee(string fullname, string position, double salary, string departmentName)
         {
             Employee employee = new Employee(fullname, position, salary, departmentName);
@@ -49,7 +47,6 @@ namespace ConsoleAppProject.Services
             _employees[_employees.Length - 1] = employee;
 
         }
-
         public void EditDepartments(string Name, string NewName)
         {
             foreach (Department item in _departments)
@@ -62,7 +59,6 @@ namespace ConsoleAppProject.Services
                 }
             }
         }
-
         public void EditEmployee(string no, string fullname, string position, double salary)
         {
             foreach (Employee item in _employees)
@@ -76,7 +72,6 @@ namespace ConsoleAppProject.Services
             }
             return;
         }
-
         public void RemoveEmployee(string No, string DepartmentName)
         {
             for (int i = 0; i < _employees.Length; i++)
@@ -88,7 +83,6 @@ namespace ConsoleAppProject.Services
                 }
             }
         }
-
         public void GetEmployees(string No, string FullName, string DepartmentName, double Salary)
         {
             Employee[] employees = new Employee[0];
@@ -106,7 +100,6 @@ namespace ConsoleAppProject.Services
 
             }
         }
-
         public void GetEmployeesByDepartments(string departmentname)
         {
             foreach (Employee item in _employees)
