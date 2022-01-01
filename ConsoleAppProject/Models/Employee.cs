@@ -9,7 +9,6 @@ namespace ConsoleAppProject.Models
         static int Count = 1000;
         public string No { get; set; }
         public string FullName { get; set; }
-        
         public string Position
         {
             get
@@ -53,7 +52,7 @@ namespace ConsoleAppProject.Models
         }
         public override string ToString()
         {
-            return $"Adi Soyadi: {FullName}\n Nomresi: {No}\nEmekhaqqi: {Salary}\nDepartament adi: {DepartmentName}\n";
+            return $"Adi Soyadi: {FullName}\nNomresi: {No}\nEmekhaqqi: {Salary}\nDepartament adi: {DepartmentName}\n";
         }
     }
 }

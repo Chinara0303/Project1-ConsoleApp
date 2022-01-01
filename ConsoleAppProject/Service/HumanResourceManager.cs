@@ -56,7 +56,6 @@ namespace ConsoleAppProject.Services
                 if (item.Name.ToLower() == NewName.ToLower())
                 {
                     item.Name = NewName;
-                    Console.WriteLine("Deyishiklik Ugurla Elave Edildi:");
                     break;
                 }
             }
@@ -67,16 +66,14 @@ namespace ConsoleAppProject.Services
             {
                 foreach (Employee item1 in item.Employees)
                 {
-                    if (item1.No==no)
+                    if (item1!=null && item1.No==no)
                     {
                           item1.FullName = fullname;
-                    item1.Position=position;
-                    item1.Salary = salary;
+                          item1.Position=position;
+                          item1.Salary = salary;
                     }
                 }
-
             }
-
         }
         public void RemoveEmployee(string No, string DepartmentName)
         {
@@ -84,14 +81,13 @@ namespace ConsoleAppProject.Services
             {
                 for (int i = 0; i < item.Employees.Length; i++)
                 {
-                    if (item.Employees[i].No == No)
+                    if (item.Employees[i] != null && item.Employees[i].No == No && item.Employees[i].DepartmentName.ToLower()==DepartmentName.ToLower())
                     {
-                        item.Employees = null;
+                        item.Employees[i] = null;
                         return;
                     }
                 }
             }
-            
         }
         public void GetEmployees(string No, string FullName, string DepartmentName, double Salary)
         {
@@ -101,7 +97,7 @@ namespace ConsoleAppProject.Services
             {
                 foreach (Employee item1 in employees)
                 {
-                    if (item1.FullName == FullName)
+                    if (item1!=null && item1.FullName == FullName)
                     {
                         Array.Resize(ref employees, employees.Length + 1);
                         employees[employees.Length - 1] = item1;
@@ -119,16 +115,21 @@ namespace ConsoleAppProject.Services
             {
                 foreach (Employee item1 in item.Employees)
                 {
-                    if (item1.DepartmentName.ToLower() == departmentname.ToLower())
+                    if (item1!=null && item1.DepartmentName.ToLower() == departmentname.ToLower())
                     {
-                        Console.WriteLine($"{item}");
-                        Console.WriteLine("_____________");
+                        item1.DepartmentName = departmentname.ToLower();
                     }
                 }
-              
-
             }
         }
 
+        public Department[] GetDepartments()
+        {
+            if (_departments.Length<0)
+            {
+                return null;
+            }
+            return _departments;
+        }
     }   
 }

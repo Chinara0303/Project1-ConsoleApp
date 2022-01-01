@@ -37,19 +37,8 @@ namespace ConsoleAppProject.Models
             }
         }
         private int _workerlimit;
-
         public Employee[] Employees = { };
-        public double CalcSalaryAverage(Department department)
-        {
-            double TotalSalary = 0;
-            int Counter = 0;
-            foreach (Employee item in department.Employees)
-            {
-                TotalSalary += item.Salary;
-                Counter++;
-            }
-            return TotalSalary / Counter;
-        }
+        
         public Department(string name, int workerlimit, double salarylimit)
         {
             Name = name;
@@ -57,11 +46,54 @@ namespace ConsoleAppProject.Models
             SalaryLimit = salarylimit;
             Employees = new Employee[0];
         }
+        public double CalcSalaryAverage()
+        {
+            double TotalSalary = 0;
+            int Counter = 0;
+            if (Employees.Length<=0)
+            {
+                return 0;
+            }
+            else
+            {
+                foreach (Employee item in Employees)
+                {
+                    TotalSalary += item.Salary;
+                    Counter++;
+                }
+                return TotalSalary / Counter;
+            }
+        }
+        public int Wcounter()
+        {
+            int TotalW = 0;
+            foreach (Employee item in Employees)
+            {
+                if (item!=null)
+                {
+                    TotalW++;
+                }
+            }
+            return TotalW;
+        }
+        public double Scounter()
+        {
+            double salarynow = 0;
+            foreach (Employee item in Employees)
+            {
+                if (item != null)
+                {
+                    salarynow += item.Salary;
+                }
+            }
+            return salarynow;
+        }
         public override string ToString()
         {
             return $"Departament adi: {Name}\nIshci sayi: {WorkerLimit}\nMaash Limiti:{SalaryLimit}\n";
+            
         }
-       
-       
+
+        
     }
 }
