@@ -58,8 +58,11 @@ namespace ConsoleAppProject.Models
             {
                 foreach (Employee item in Employees)
                 {
-                    TotalSalary += item.Salary;
-                    Counter++;
+                    if (item!=null)
+                    {
+                        TotalSalary += item.Salary;
+                        Counter++;
+                    }
                 }
                 return TotalSalary / Counter;
             }

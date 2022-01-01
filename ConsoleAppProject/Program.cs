@@ -122,15 +122,16 @@ namespace ConsoleAppProject
             string positionname = " ";
             bool check = false;
             double SalaryNum = 0;
+
             foreach (Department item in humanResourceManager.Departments)
             {
                 if (item.Name.ToLower() == DepartmentName.ToLower())
                 {
-                    item.Name = DepartmentName;
+
                     check = true;
                     if (item.WorkerLimit <= item.Wcounter())
                     {
-                        Console.WriteLine("Departamentde Olan Ishci Sayi Limitini Ashdiniz:");
+                        Console.WriteLine("Departamentde Olan Ishci Sayi Limitini Ashdiniz: ");
                         return;
                     }
                     Console.Write("Elave Etmek Istediyiniz Ishchinin Ad Ve Soyadini Daxil Edin:");
@@ -139,10 +140,10 @@ namespace ConsoleAppProject
                     string[] vs = fullname.Split(' ');
                     if (String.IsNullOrWhiteSpace(fullname) || vs.Length < 2)
                     {
-                        Console.WriteLine("Ad ve Soyadi Duzgun Daxil Edin:");
+                        Console.WriteLine("Ad ve Soyadi Duzgun Daxil Edin: ");
                         goto start;
                     }
-                    Console.WriteLine("Ishchinin Vezifesini Daxil Edin:");
+                    Console.WriteLine("Ishchinin Vezifesini Daxil Edin: ");
                 checkP:
                     positionname = Console.ReadLine();
                     if (String.IsNullOrWhiteSpace(positionname) || positionname.Length < 2)
@@ -174,7 +175,6 @@ namespace ConsoleAppProject
                     }
                     break;
                 }
-
             }
             if (check)
             {
@@ -182,13 +182,14 @@ namespace ConsoleAppProject
             }
             if (check == false)
             {
-                Console.WriteLine("Deparatment Movcud Deyil.");
+                Console.WriteLine("Departament Movcud Deyil.");
                 Console.WriteLine("Departamentin Adini Yeniden Daxil Edin:");
-
+                goto checkDN;
             }
             humanResourceManager.AddEmployee(fullname, positionname, SalaryNum, DepartmentName);
-
         }
+
+
         static void GetDepartments(ref HumanResourceManager humanResourceManager)
         {
             if (humanResourceManager.Departments.Length > 0)
@@ -289,7 +290,7 @@ namespace ConsoleAppProject
                 Console.WriteLine("___________________");
                 if (item.Employees.Length <= 0)
                 {
-                    Console.WriteLine("Departamentde Ishci Sayi Sifirdir.Once Ishci Elave Edin:");
+                    Console.WriteLine("Departamente Ishci Elave Olunmayib.Once Ishci Elave Edin:");
                     return;
                 }
             }
@@ -313,7 +314,6 @@ namespace ConsoleAppProject
                             Console.WriteLine($"{item1}Vezife:{item1.Position}\n");
                             Console.WriteLine("_________________");
                         }
-                        
                     }
                     check = false;
                     break;
@@ -326,7 +326,6 @@ namespace ConsoleAppProject
                 }
                 break;
             }
-
         }
         static void EditEmployee(ref HumanResourceManager humanResourceManager)
         {
