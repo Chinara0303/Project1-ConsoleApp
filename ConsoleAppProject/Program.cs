@@ -24,8 +24,6 @@ namespace ConsoleAppProject
                 Console.WriteLine("8: Departamentden isci silinmesi ");
                 Console.WriteLine("9: Sistemden Chix ");
                 Console.Write(" Emeliyyatin Nomresini Daxil Edin:");
-
-
                 string choose = Console.ReadLine();
                 int chooseNum;
                 int.TryParse(choose, out chooseNum);
@@ -81,6 +79,7 @@ namespace ConsoleAppProject
                     if (item!=null && item.Employees.Length > 0)
                     {
                         Console.WriteLine("Ishchilerin Siyahisi:");
+                        Console.WriteLine("_____________________");
 
                         foreach (Employee item1 in item.Employees)
                         {
@@ -115,7 +114,7 @@ namespace ConsoleAppProject
             string DepartmentName = Console.ReadLine();
             if (String.IsNullOrWhiteSpace(DepartmentName) || DepartmentName.Length < 2)
             {
-                Console.WriteLine("Departmentin Adini Duzgun Daxil Edin: ");
+                Console.WriteLine("Departamentin Adini Duzgun Daxil Edin: ");
                 goto checkDN;
             }
             string fullname = " ";
@@ -127,7 +126,6 @@ namespace ConsoleAppProject
             {
                 if (item.Name.ToLower() == DepartmentName.ToLower())
                 {
-
                     check = true;
                     if (item.WorkerLimit <= item.Wcounter())
                     {
@@ -188,8 +186,6 @@ namespace ConsoleAppProject
             }
             humanResourceManager.AddEmployee(fullname, positionname, SalaryNum, DepartmentName);
         }
-
-
         static void GetDepartments(ref HumanResourceManager humanResourceManager)
         {
             if (humanResourceManager.Departments.Length > 0)
@@ -278,7 +274,7 @@ namespace ConsoleAppProject
         {
             if (humanResourceManager.Departments.Length <= 0)
             {
-                Console.WriteLine("Once Department Yaradin: ");
+                Console.WriteLine("Once Department Yaradin:");
                 return;
             }
             Console.Clear();
@@ -288,18 +284,13 @@ namespace ConsoleAppProject
             {
                 Console.WriteLine($"{item}");
                 Console.WriteLine("___________________");
-                if (item.Employees.Length <= 0)
-                {
-                    Console.WriteLine("Departamente Ishci Elave Olunmayib.Once Ishci Elave Edin:");
-                    return;
-                }
             }
             Console.WriteLine("Hansi Departmentde Olan Ishchilere Baxmaq Isteyirsinizse O Departamentin Adini Daxil Edin:");
         start:
             string departmentname = Console.ReadLine();
             if (string.IsNullOrWhiteSpace(departmentname) || departmentname.Length < 2)
             {
-                Console.WriteLine("Duzgun Daxil Edin: ");
+                Console.WriteLine("Duzgun Daxil Edin:");
                 goto start;
             }
             bool check = true;
@@ -307,24 +298,33 @@ namespace ConsoleAppProject
             {
                 if (item.Name.ToLower() == departmentname.ToLower())
                 {
+                    item.Name = departmentname;
+                    int empcounter = 0;
                     foreach (Employee item1 in item.Employees)
                     {
-                        if (item1!= null )
+                        if (item1 != null)
                         {
+                            item.Name = departmentname;
+                            empcounter++;
+                            Console.WriteLine("Ishchilerin Siyahisi:");
+                            Console.WriteLine("_________________");
                             Console.WriteLine($"{item1}Vezife:{item1.Position}\n");
                             Console.WriteLine("_________________");
                         }
                     }
+                    if (empcounter == 0)
+                    {
+                        Console.WriteLine("Bu Departamente Ishchi Elave Olunmayib. Once Ishchi Elave Edin:");
+                    }
                     check = false;
-                    break;
                 }
-                if (check == false)
-                {
-                    Console.WriteLine("Bu Adda Departament Movcud Deyil.");
-                    Console.WriteLine("Duzgun Daxil Edin:");
-                    goto start;
-                }
-                break;
+            }
+            if (check)
+            {
+                Console.WriteLine("Bu Adda Departament Movcud Deyil.");
+                Console.WriteLine("Duzgun Daxil Edin:");
+                goto start;
+
             }
         }
         static void EditEmployee(ref HumanResourceManager humanResourceManager)
@@ -520,6 +520,12 @@ namespace ConsoleAppProject
                     }
 
                     break;
+                }
+                else
+                {
+                    Console.WriteLine("Bu Adda Departament Movcud Deyil:");
+                    Console.WriteLine("Duzgun Departament Adi Daxil Edin:");
+                    goto checkdepname;
                 }
             }
                 humanResourceManager.RemoveEmployee(Wdelete, Departmentname);
